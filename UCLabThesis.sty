@@ -1,0 +1,428 @@
+% 鈴木研究室　卒業論文・修士論文・博士論文スタイルファイル
+% Version: 1.5
+% Last Update: 2012/01/30 by Hidekazu Suzuki
+% Contact to: hsuzuki@meijo-u.ac.jp
+% Character code: UTF-8
+
+%--------------------------------------------------------------
+% ページレイアウト
+%--------------------------------------------------------------
+% 余白を設定するスタイルファイル
+\usepackage{geometry}
+
+% 用紙サイズ
+\geometry{a4paper}
+% 余白
+\geometry{top=2.5cm,bottom=3.0cm,left=2.5cm,right=2.5cm}
+% フッター余白
+\geometry{footskip=1.0cm}
+% 奇数/偶数ページに応じて綴代を設定
+\geometry{twoside}
+% 綴代
+\geometry{bindingoffset=0cm}
+
+%--------------------------------------------------------------
+% 行送り
+%--------------------------------------------------------------
+\renewcommand{\baselinestretch}{1.2}	% 行送り間隔の倍率
+
+%--------------------------------------------------------------
+% フォント設定
+%--------------------------------------------------------------
+% 本文フォントをTimes系に変更するスタイルファイル
+% * デフォルトのローマンフォントをTimesに変更
+% * デフォルトのサンセリフフォントをHelveticaに変更
+% * デフォルトの等幅フォントをCourierに変更
+%\usepackage{times}
+% 等幅フォントはそのままとし，ローマンフォントとサンセリフフォントをTimes，Helveticaに変更する場合
+\renewcommand{\rmdefault}{ptm}
+\renewcommand{\sfdefault}{phv}
+
+% 数式フォントをTimes系に変更するスタイルファイル
+\usepackage{mathptmx}
+
+%--------------------------------------------------------------
+% 数式関係
+%--------------------------------------------------------------
+% AMS（米国数学会）の数式環境を利用するスタイルファイル
+% * オプションにcmex10を指定することにより，ビットマップフォントの組込を防止
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+
+%--------------------------------------------------------------
+% 矢印関係
+%--------------------------------------------------------------
+% 矢印の上下に記述を追加するスタイルファイル
+\usepackage{extarrows}
+% ベクトル記号
+\usepackage{esvect}
+
+%--------------------------------------------------------------
+% 表紙デザインの定義
+%--------------------------------------------------------------
+% 卒業年度
+\def\gyear#1{\def\@gyear{#1}}
+% 英文題目
+\def\etitle#1{\def\@etitle{#1}}
+% 学籍番号
+\def\studentid#1{\def\@studentid{#1}}
+
+\def\@bachelor{%
+  \def\@thesis{卒 業 論 文}%
+  \def\@faculty{理工学部}%
+  \def\@department{情報工学科}%
+  \def\@lab{鈴木研究室}%
+}
+
+\def\@master{%
+  \def\@thesis{修 士 論 文}%
+  \def\@faculty{大学院理工学研究科}%
+  \def\@department{情報工学専攻}%
+  \def\@lab{鈴木研究室}%
+}
+
+\def\@doctor{%
+  \def\@thesis{博 士 論 文}%
+  \def\@faculty{大学院理工学研究科}%
+  \def\@department{電気電子・情報・材料工学専攻}%
+  \def\@lab{鈴木研究室}%
+}
+
+\def\bachelor{\@bachelor}
+\def\master{\@master}
+\def\doctor{\@doctor}
+
+% 表紙デザイン
+\renewcommand{\maketitle}{%
+	\begin{titlepage}
+		\vspace*{10mm}
+		\begin{center}
+			{\huge \@gyear 年度\hspace{5mm} \@thesis \par}
+			\vspace{20mm}
+			{\Large 和文題目\par}
+			{\huge\bf \@title\par}	% タイトル
+			\vspace{10mm}
+			{\Large 英文題目\par}
+			{\huge\bf \@etitle\par}	% タイトル
+			\vfill
+			\vspace{20mm}
+			{\Large \@department　\@lab\par}	% 所属学科・研究室
+			{\Large (学籍番号: \@studentid )\par}	% 学籍番号
+			\vspace{5mm}
+			{\LARGE \@author\par}	% 氏名
+			\vspace{10mm}
+			{\Large 提出日: \@date\par}	% 提出年月日
+			\vspace{20mm}
+			{\Large 名城大学\@faculty}
+			\vspace{10mm}
+		\end{center}
+	\end{titlepage}}
+
+%--------------------------------------------------------------
+% アブストラクト
+%--------------------------------------------------------------
+% 和文アブストラクト環境の再定義
+\renewenvironment{abstract}%
+{%
+\pagenumbering{roman}
+	\bigskip%
+	{
+		\begin{minipage}{15cm}%
+		\begin{center}%
+		\Large\bfseries 概要%
+		\end{center}%
+		\end{minipage}%
+		\vskip 2zh%
+		\setlength{\parindent}{1zw}
+	}
+}%
+{%
+	\par
+}
+
+% 英文アブストラクト環境の定義
+\newenvironment{eabstract}%
+{%
+	\vskip 3zh%
+	\bigskip%
+	{
+		\begin{minipage}{15cm}%
+		\begin{center}%
+		\Large\bfseries Abstract%
+		\end{center}%
+		\end{minipage}%
+		\vskip 2zh%
+		\setlength{\parindent}{1zw}
+	}
+}%
+{%
+	\newpage
+}
+
+%--------------------------------------------------------------
+% 目次に掲載する節の深さ
+%--------------------------------------------------------------
+% * 1：章・節まで
+% * 2：章・節・項まで
+\setcounter{tocdepth}{2}
+
+%----------------------------------------------------------------------
+% 目次用コマンドの定義
+%----------------------------------------------------------------------
+\def\contents{
+%	\pagenumbering{roman}	% \abstractを使わない場合は，%をとる
+	\tableofcontents
+	\newpage
+	\listoffigures
+	\newpage
+	\listoftables
+	\newpage
+	\pagenumbering{arabic}
+}
+
+%----------------------------------------------------------------------
+% セクション
+%----------------------------------------------------------------------
+% 節（\section）のカスタマイズ
+% * 見出しの上部の余白を1.5から下部と同じ0.5に変更（\@startsectionの第4引数）
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+{.5\Cvs \@plus.5\Cvs \@minus.2\Cvs}%
+{.5\Cvs \@plus.3\Cvs}%
+{\reset@font\large\bfseries}}
+% 目（\subsubsection）のカスタマイズ
+% * 文字サイズを\normalsizeから\largeに拡大
+% * 見出しの上部の余白を1.5から下部と同じ0.5に変更（\@startsectionの第4引数）
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+{.5\Cvs \@plus.5\Cvs \@minus.2\Cvs}%
+{.5\Cvs \@plus.3\Cvs}%
+{\reset@font\large\bfseries}}
+
+%----------------------------------------------------------------------
+% 脚注
+%----------------------------------------------------------------------
+% 脚注番号の前に記号を設定（スター）
+\renewcommand{\thefootnote}{$\star$\arabic{footnote}}
+
+%--------------------------------------------------------------
+% 図表のフォーマット
+%--------------------------------------------------------------
+% 図を挿入するスタイルファイル
+%\usepackage[dvipdfm]{graphicx}
+\usepackage[dvipdfmx]{graphicx}
+% PNG，JPEG，PDF形式の図を挿入する場合のbbファイルを自動生成するスタイルファイル
+\usepackage{mediabb}
+% 図表の位置を指定するスタイルファイル
+\usepackage{float}
+
+% 図表のキャプションを調整するスタイルファイル 
+\usepackage{caption}				
+% キャプションのスタイルを設定
+% * フォーマット：ぶら下げインデントを設定，各行を左マージンへ移動
+% * フォントサイズ：small
+% * フォント：太字
+% * ラベル区切り文字：空白（\quad）
+% * キャプションの上下間隔：2mm
+\captionsetup{format=hang,justification=raggedright,font={small,bf},labelsep=quad,skip=2mm}
+
+% 図表を並べて掲載するスタイルファイル
+% * 図表キャプションは1つで，各図表にサブキャプションを設定する
+\usepackage{subfig}
+% サブキャプションのスタイルを設定
+% * フォントサイズ：footnotesize
+% * フォント：太字
+\captionsetup[subfigure]{font={footnotesize,bf}}
+
+% 図表番号スタイル（チャプター番号は表示しない）
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+% チャプターが変わっても図表番号をリセットせずに連番にする
+\usepackage{remreset}
+\@removefromreset{figure}{chapter}
+\@removefromreset{table}{chapter}
+
+% ページの上下に出力される図表と本文の間のスペース
+\setlength{\floatsep}{2zh}
+% ページの上下に出力される図表と図表の間のスペース
+\setlength{\textfloatsep}{2zh}
+% ページの途中に出力される図表と本文の間のスペース
+\setlength{\intextsep}{2zh}
+
+% subfigureキャプション下のスペース
+\def\subfigbottomskip{0zh}
+% subfigureキャプション上のスペース
+\def\subfigcapskip{0pt}
+
+% 図と表を並べて記載する場合に使用するキャプションコマンドの定義
+% * \figcaption：table環境内に記載した図のキャプションを表示する場合に使用
+% * \tabcaption：figure環境内に記載した表のキャプションを表示する場合に使用
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tabcaption}[1]{\def\@captype{table}\caption{#1}}
+
+% array環境とtabular環境を改善するスタイルファイル
+\usepackage{array}
+% 表組みの行を結合するスタイルファイル
+\usepackage{multirow}
+
+% 太い罫線
+\def\Hline{\noalign{\hrule height 0.4mm}}
+
+%--------------------------------------------------------------
+% 1ページ当たりに図表が占める割合
+%--------------------------------------------------------------
+% ページ上部を占める割合の上限
+\def\topfraction{1.0}
+% ページ下部を占める割合の上限
+\def\bottomfraction{1.0}
+% 図表がページを占める割合の上限
+\def\floatpagefraction{1.0}
+% ページ上部を占める図表の数の上限
+\setcounter{topnumber}{5}
+% ページ下部を占める図表の数の上限
+\setcounter{bottomnumber}{5}
+% ページを占める図表の数の上限
+\setcounter{totalnumber}{10}
+% ページうち本文が占める割合の下限
+\def\textfraction{0.0}
+
+%--------------------------------------------------------------
+% 図表，数式および章節の参照の定義
+%--------------------------------------------------------------
+\def\figref#1{\figurename\hskip1ex \ref{#1}}
+\def\tabref#1{\tablename\hskip1ex \ref{#1}}
+\def\eqref#1{式(\ref{#1})}
+\def\chapref#1{\ref{#1}章}
+\def\secref#1{\ref{#1}節}
+\def\subsecref#1{\ref{#1}項}
+\def\apdxref#1{付録\ref{#1}}
+
+%--------------------------------------------------------------
+% 囲み・枠
+%--------------------------------------------------------------
+% 文章の一部を囲む場合（複数行非対応）
+\usepackage{fancybox}
+% 複数行の文章を囲む場合（枠の種類はfancyboxの方が豊富）
+\usepackage{ascmac}
+% 複数ページにまたがる枠
+\usepackage{framed}		% 複数の閉じた枠に分割する
+\usepackage{eclbkbox}	% 枠の切れ目を閉じない	http://hashi4.civil.tohoku.ac.jp/~bear/bear-collections/style-files/style-fj.html
+
+%--------------------------------------------------------------
+% 箇条書き
+%--------------------------------------------------------------
+% 指定した箇所のレベル記号を変更できるスタイルファイル
+\usepackage{enumerate}
+% カスタマイズ可能なアイテムリスト
+\usepackage{enumitem}
+
+% 番号付き箇条書きの修飾を設定
+% * 第1レベルの表記を（1）のように括弧をつける．
+% * 括弧の内側に\,をつけることにより，括弧内の数値の前後に若干のスペースを設ける．
+\def\labelenumi{（\,\theenumi\,）}
+% * 第2レベルの表記を（a）のように括弧を和文全角に変更する．
+\def\labelenumii{（\,\theenumii\,）}
+
+% 箇条書きの行間調整（itemize，enumerate，description用）
+% * 第1レベル
+\def\@listI{
+ \leftmargin=\leftmargini
+ \parsep=\z@
+ \topsep=2truept plus 2truept minus 1truept
+ \itemsep=0truept plus 2truept\relax}
+\let \@listi=\@listI
+\@listi
+
+% * 第2レベル
+\def\@listii{
+ \leftmargin=\leftmarginii
+ \labelwidth=\leftmarginii
+ \advance \labelwidth by -\labelsep
+ \topsep=0truept plus 1truept minus 0truept
+ \parsep=\z@
+ \itemsep=0truept plus 1truept\relax}
+
+% * 第3レベル
+\def\@listiii{
+ \leftmargin=\leftmarginiii
+ \labelwidth=\leftmarginiii
+ \advance \labelwidth by -\labelsep
+ \topsep=0truept plus 1truept minus 0truept
+ \parsep=\z@}
+
+% 箇条書きの内容部分の行頭をそろえる
+\newcolumntype{i}{>{\labelitemi\hspace{\tabcolsep}}l}
+\newenvironment{itemtabular}
+  {\vspace{0.5zh}\tabular{il}}
+  {\endtabular\vspace{0.5zh}}
+  
+%--------------------------------------------------------------
+% コマンド名などをCourierフォントで表示するマクロの定義
+%--------------------------------------------------------------
+% アンダースコア（_）を表示するマクロ
+\def\us{\symbol{"5F}}
+% コマンドを表示するマクロ（先頭にバックスラッシュが記述される）
+\newcommand{\cmd}[1]{\texttt{\symbol{"5C}#1}}
+
+\newenvironment{code}
+{
+\VerbatimEnvironment
+\begin{screen}
+\small
+\begin{Verbatim}
+}
+{
+\end{Verbatim}
+\end{screen}
+}
+
+%--------------------------------------------------------------
+% 謝辞環境
+%--------------------------------------------------------------
+\newenvironment{gratitude}%
+{%
+	\newpage
+	\addcontentsline{toc}{chapter}{謝辞}
+	\chapter*{謝辞}
+}%
+{%
+	\newpage
+}
+
+%--------------------------------------------------------------
+% 参考文献
+%--------------------------------------------------------------
+% 文献の参考を改良するスタイルファイル
+\usepackage{cite}
+% URLやファイルパスなどの標記に利用するスタイルファイル
+\usepackage{url}
+
+% 参考文献の表記を「関連図書」から「参考文献」に変更
+\renewcommand{\bibname}{参考文献}
+
+% 参考文献を\chapterから\sectionへ変更
+\def\thebibliography#1{\section*{参考文献\markboth
+	{参考文献}{参考文献}}\list
+	{[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+	\advance\leftmargin\labelsep
+	\usecounter{enumi}}
+	\def\newblock{\hskip .11em plus .33em minus -.07em}
+	\fussy
+	\sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+%--------------------------------------------------------------
+% 研究業績環境
+%--------------------------------------------------------------
+%\newenvironment{achievement}%
+%{%
+%	\newpage
+%	\addcontentsline{toc}{chapter}{研究業績}
+%	\chapter*{研究業績}
+%	\label{chap:Achievement}
+%}%
+%{%
+%	\newpage
+%}
+
+% ローマ数字
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}}
