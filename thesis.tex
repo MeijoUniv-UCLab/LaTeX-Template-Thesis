@@ -1,13 +1,9 @@
-% 鈴木研究室　卒業論文テンプレート
-% Version: 1.8
-% Last Update: 2016/12/22 by Hidekazu Suzuki
+% 鈴木研究室　卒業論文/修士論文/博士論文テンプレート
+% Version: 2.0
+% Last Update: 2024/01/06 by Hidekazu Suzuki
 % Contact to: hsuzuki@meijo-u.ac.jp
 % Character code: UTF-8
 
-% TexStudio もしくは Texmaker のオプション＞設定＞コマンド＞LaTexの項目をよく確認して下記 documentclass を適宜選択
-%platexを用いてコンパイルする場合（2015年度以前にLaTex環境を構築した人はこっち）
-%\documentclass[a4j,11pt]{jreport}
-%uplatexを用いてコンパイルする場合（2016年度以降，Tex LiveでLaTex環境を構築した人はこっち）
 \documentclass[a4j,11pt]{ujreport}
 \usepackage{UCLabThesis}
 
@@ -15,18 +11,18 @@
 % 表紙
 %--------------------------------------------------------------
 
-% 論文種類（変更しないこと!!）
+% 論文種類（作成する論文種別に応じて，1つを選択すること）
 \bachelor		% 卒業論文
 %\master	% 修士論文
-%\thesis		% 博士論文
+%\doctor		% 博士論文
 
-% 卒業年度
-\gyear{平成23}
+% 卒業年度（和暦）
+\gyear{令和5}
 
 % タイトル（和文・英文）
 % 長い場合は自動的に改行される．「\\」の挿入で任意の位置で改行可能．
-\title{鈴木研究室における卒業論文テンプレートの\\使い方に関する研究}
-\etitle{A Study on How to Use Template of\\Bachelor Thesis in Suzuki Laboratory}
+\title{鈴木研究室における論文テンプレートの\\使い方に関する研究}
+\etitle{A Study on How to Use Template of\\Thesis in Suzuki Laboratory}
 
 % 著者（姓と名の間に全角スペース）
 \author{鈴木　秀和}
@@ -34,8 +30,8 @@
 % 学籍番号
 \studentid{080427000}
 
-% 論文提出日
-\date{平成24年2月10日}
+% 論文提出日（和暦）
+\date{令和6年2月5日}
 
 \begin{document}
 % 表紙（消さないこと!!）
@@ -48,11 +44,11 @@
 %--------------------------------------------------------------
 % 和文
 \begin{abstract}
-ここに卒業研究の概要を和文で記述する．
+ここに研究の概要を和文で記述する．
 \end{abstract}
 % 英文
 \begin{eabstract}
-You must write an abstract of your bachelor thesis in English here.
+You must write an abstract of your thesis in English here.
 \end{eabstract}
 \cleardoublepage
 
@@ -71,12 +67,16 @@ You must write an abstract of your bachelor thesis in English here.
 %---序論（ここから）------------------------------------------
 \chapter{序論}\label{chap:Intro}
 
-鈴木研究室では，{\LaTeX}により卒業論文を執筆することとしている．
-{\LaTeX}を用いることにより，簡単に卒業論文の体裁に則った出力が得られるため，体裁に関する不備を最小限に抑えることができ，文章を記述することに専念できる．
+鈴木研究室では，{\LaTeX}により卒業論文，修士論文および博士論文を執筆することとしている．
+{\LaTeX}を用いることにより，簡単に各種論文の体裁に則った出力が得られるため，体裁に関する不備を最小限に抑えることができ，文章を記述することに専念できる．
 また，鈴木研究室では日常の研究報告資料や学会発表論文を{\LaTeX}で作成しているため，それらの資産を活用することにより，効率よく論文を執筆することも可能である．
 
-この文章\footnote{\texttt{bthesis.tex}}は卒業論文のスタイルファイル\footnote{\texttt{UCLabThesis.sty}}を利用して作成されているため，各自が卒業論文を執筆する場合にテンプレートとして参考・使用されたい．
-なお，この{\TeX}ファイルおよび鈴木研究室用スタイルファイルはUTF-8で作成されているため，特にWindows PCにおいて編集時にShift JISなどの別の文字コードに変更しないよう注意してほしい．
+この文章\footnote{\texttt{thesis.tex}}は卒業論文のスタイルファイル\footnote{\texttt{UCLabThesis.sty}}を利用して作成されているため，各自が卒業論文を執筆する場合にテンプレートとして参考・使用されたい．
+この{\TeX}ファイルおよび鈴木研究室用スタイルファイルはUTF-8で作成されているため，特にWindows PCにおいて編集時にShift JISなどの別の文字コードに変更しないよう注意してほしい．
+また，本テンプレートは研究室のGitHubリポジトリ\footnote{\url{https://github.com/MeijoUniv-UCLab/LaTeX-Template-Thesis}}で管理されている．
+教員が各自の論文プロジェクトをOverleafで作成した後，研究室メールアドレスを利用して共有するため，そのプロジェクトを利用して論文を執筆すること．
+
+なお，以降の文章では卒業論文を前提に記述しているが，修士論文および博士論文については読み替えてほしい．
 
 %---序論（ここまで）------------------------------------------
 
@@ -95,10 +95,10 @@ You must write an abstract of your bachelor thesis in English here.
 \begin{itemize}
 \item \cmd{bachelor}：\mbox{}\\
 卒業論文用タイトルページのフォーマットにする．
-修士論文または博士論文の場合はこの記述をコメントアウトし，それぞれ\cmd{master}または\cmd{thesis}を指定する．
+修士論文または博士論文の場合はこの記述をコメントアウトし，それぞれ\cmd{master}または\cmd{doctor}を指定する．
 
 \item \cmd{gyear}：\mbox{}\\
-\verb|\gyear{平成23}|のように，卒業年度を和暦（元号+年度）で入力する．
+\verb|\gyear{令和5}|のように，卒業年度を和暦（元号+年度）で入力する．
 
 \item \cmd{title}，\cmd{etitle}：\mbox{}\\
 卒業論文の題目を和文，英文で入力する．
@@ -110,14 +110,21 @@ You must write an abstract of your bachelor thesis in English here.
 なお，記述する際には\verb|\author{鈴木　秀和}|のように姓と名の間に全角スペースを1文字入力すること．
 
 \item \cmd{studentid}：\mbox{}\\
-学籍番号を省略せずに入力する．
+学籍番号を省略せずに半角で入力する．
 
 \item \cmd{date}：\mbox{}\\
-\verb|\date{平成24年2月10日}|のように，卒業論文提出日を和暦（元号+年月日）で入力する．
+\verb|\date{令和6年2月5日}|のように，卒業論文提出日を和暦（元号+年月日）で入力する．
 \end{itemize}
 
 \begin{boxnote}
-なお，学科事務室へ卒業論文を提出する際は，情報工学科ローカルサーバ\url{http://rjie.meijo-u.ac.jp/}の「卒業論文」ページに用意されている専用タイトルページ（Word形式）に差し替えること．
+    \begin{description}
+        \item[卒業論文：] 学科より論文表紙のWordテンプレートが用意されているが，本テンプレートに必要な情報がすべて含まれているため，表紙を変更する必要はない．
+        \item[修士論文：] 研究科から指定の論文表紙のWordテンプレートが用意されている．
+        事務室へ紙媒体を提出する場合は，本テンプレートで作成した表紙ではなく，公式の表紙に差し替えて提出すること．
+        （副査へ提出する場合も，公式の表紙をPDFに変換して，差し替えること．）
+        \item[博士論文：] 研究科から指定の論文表紙が提示されている場合は，上記「修士論文」に記載の通り，差し替えて提出する．
+        特に指定の表紙が無い場合は，上記「卒業論文」に記載の通り，本論文のテンプレートのまま提出すればよい．
+    \end{description}
 \end{boxnote}
 
 \subsection{概要}
@@ -138,7 +145,8 @@ English abstract
 
 \subsection{論文本体}
 ここから論文の本体（「第1章」から「まとめ」まで）を記述する．
-分量が多くなり1つの{\TeX}ファイルでの管理が大変になった場合は，\cmd{input}コマンドを用いて外部{\TeX}ファイルを読み込む形式にするとよい．
+修士論文や卒業論文においては，分量が多くなり1つの{\TeX}ファイルでの管理が大変になる場合がある．
+そのような場合は，\cmd{input}コマンドを用いて外部{\TeX}ファイルを読み込む形式にするとよい\footnote{卒業論文の文量であれば，この{\TeX}ファイルに直接記述していけば十分である．}．
 なお，\pageref{chap:Achievement}ページ以降の研究業績および付録は，それぞれ\texttt{achievement.tex}および\texttt{appendix.tex}を読み込んでいる．
 
 この{\TeX}ファイルは\texttt{jreport}スタイルを採用しているため，\tabref{tab:HeadCommands}に示すコマンドを使用して章節項を設定する．
@@ -194,11 +202,11 @@ English abstract
 そこで，本テンプレートでは各項目の参照には下記のような独自のコマンドを定義している．
 本文中で参照を利用する場合は，\tabref{tab:ReferenceCommands}に示すコマンドを利用する．
 
-\begin{table}[b]
+\begin{table}[ht]
 	\centering
 	\begin{tabular}{c}
 		% 左側の表
-		\begin{minipage}[t]{0.33\hsize}
+		\begin{minipage}[t]{0.4\hsize}
 			\centering
 			\caption{ラベルの命名規則}
 			\label{tab:NamingConventions}
@@ -214,11 +222,12 @@ English abstract
 				図 & \texttt{fig:LABEL} \\ 
 				表 & \texttt{tab:LABEL} \\ 
 				数式 & \texttt{eq:LABEL} \\ 
+                ソースコード & \texttt{src:LABEL} \\
 				\hline 
 			\end{tabular} 
 		\end{minipage}%
 		% 右側の表
-		\begin{minipage}[t]{0.66\hsize}
+		\begin{minipage}[t]{0.59\hsize}
 			\centering
 			\caption{独自参照コマンド一覧}
 			\label{tab:ReferenceCommands}
@@ -234,6 +243,7 @@ English abstract
 				\cmd{figref} & 図を参照\\
 				\cmd{tabref} & 表を参照\\
 				\cmd{eqref} & 数式を参照\\
+                \cmd{srcref} & ソースコードを参照\\
 				\hline 
 			\end{tabular} 
 		\end{minipage}
@@ -244,15 +254,9 @@ English abstract
 \section{図表}
 
 \subsection{図}
-図は拡大縮小しても美しく表示されるように，できる限りベクタ図で作成することが望ましい．
-ベクタ図はPowerPointやVisioなどで作図し，EPSファイルに変換して生成することができる．
-EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{https://sites.google.com/a/ccalumni.meijo-u.ac.jp/uclab-wiki/latex/figure}}を参照すること．
-ラスタ図はスクリーンキャプチャや写真などの図に限定し，PNGファイルやJPEGファイルとして用意する．
-
-ただし，JPEGファイルなど画像ファイルのままでは貼り付けられない．
-コマンドプロンプトを開き，\verb|extractbb|コマンドを用いて.xbbファイルを生成しておく必要がある．
-
-コマンド例：\verb|extractbb logo.png|
+図は拡大縮小しても美しく表示されるように，ベクタ形式で図を作成すること．
+ベクタ図はPowerPointやdraw.ioなどで作図し，PDFファイルに変換して生成することができる．
+スクリーンキャプチャや写真などの図に限定し，ラスタ形式のPNGファイルやJPEGファイルとして掲載してよい．
 
 \texttt{figure}環境を用いて下記のテンプレートに従って図を掲載する．
 \texttt{figure}環境の位置オプションには\tabref{tab:FigureOptions}に示すものが利用でき，図の挿入位置を指定することができる．
@@ -270,14 +274,14 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[clip,scale=0.3]{fig/tiger.eps}
-	\caption{EPSファイルの読み込み}
-	\label{fig:ExampleEPS}
+	\includegraphics[clip,scale=0.3]{fig/tiger.pdf}
+	\caption{PDFファイルの読み込み}
+	\label{fig:ExamplePDF}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[autoebb,clip,height=3.0cm]{fig/logo.png}
+	\includegraphics[clip,height=3.0cm]{fig/logo.png}
 	\caption{PNGファイルの読み込み}
 	\label{fig:ExamplePNG}
 \end{figure}
@@ -311,7 +315,6 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 		\texttt{height=}$SIZE$ & 図の高さを$SIZE$で指定（例：\texttt{height=4.0cm}）\\
 		\texttt{scale=}$RATIO$ & 図の大きさを$RATIO$で指定した比率で拡大縮小（例：\texttt{scale=0.8}）\\
 		\texttt{clip} & 描画領域（Bounding Box）のみを出力．とりあえず設定しておけばよい．\\
-		\texttt{autoebb} & PNGやJPEGを読み込む場合は，必ず指定する．\\
 		\hline 
 	\end{tabular} 
 \end{table}
@@ -415,14 +418,14 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 	% 左側の図
 	\begin{minipage}[b]{0.5\hsize}
 		\centering
-		\includegraphics[clip,height=5.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=5.0cm]{fig/tiger.pdf}
 		\caption{図の並列掲載例（左側）}
 		\label{fig:ExampleParallelFigureLeft}
 	\end{minipage}% ←この%は削除しないこと
 	% 右側の図
 	\begin{minipage}[b]{0.5\hsize}
 		\centering
-		\includegraphics[clip,height=3.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=3.0cm]{fig/tiger.pdf}
 		\caption{図の並列掲載例（右側）}
 		\label{fig:ExampleParallelFigureRight}
 	\end{minipage}
@@ -510,7 +513,7 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 		% 左側の図
 		\begin{minipage}[]{0.5\hsize}
 			\centering 
-			\includegraphics[clip,height=4.0cm]{fig/tiger.eps}
+			\includegraphics[clip,height=4.0cm]{fig/tiger.pdf}
 			\caption{図表の並列掲載例1（左側を図とした場合）}
 			\label{fig:ExampleParallelMixLeft1}
 		\end{minipage}% ←この%は削除しないこと
@@ -558,7 +561,7 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 	% 右側の図
 	\begin{minipage}[]{0.5\hsize}
 		\centering
-		\includegraphics[clip,height=4.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=4.0cm]{fig/tiger.pdf}
 		\figcaption{図表の並列掲載例2（右側を図とした場合）}
 		\label{fig:ExampleParallelMixRight2}
 	\end{minipage}
@@ -575,17 +578,17 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 \begin{figure}[ht]
 	\centering
 	\subfloat[1匹目のタイガー]{%
-		\includegraphics[clip,height=3.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=3.0cm]{fig/tiger.pdf}
 		\label{fig:ExampleSubfigFigure1}
 	}%
 	\qquad
 	\subfloat[2匹目のタイガー]{%
-		\includegraphics[clip,height=3.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=3.0cm]{fig/tiger.pdf}
 		\label{fig:ExampleSubfigFigure2}
 	}%
 	\qquad
 	\subfloat[3匹目のタイガー]{%
-		\includegraphics[clip,height=3.0cm]{fig/tiger.eps}
+		\includegraphics[clip,height=3.0cm]{fig/tiger.pdf}
 		\label{fig:ExampleSubfigFigure3}
 	}%
 	\caption{\texttt{subfig}環境を用いた図の並列表記例}
@@ -623,7 +626,6 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 
 \begin{screen}
 \begin{itemize}
-\renewcommand{\labelitemi}{＃}
 \item 項目1
 \item 項目2
 \begin{itemize}
@@ -636,13 +638,15 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 \end{itemize}
 \end{screen}
 
-記号はできる限り標準のものを使用することが望ましいが，変更したい場合は下記のように\cmd{renewcommand}により\cmd{labelitemi}の記号を指定したものに変更できる．
+記号はできる限り標準のものを使用することが望ましいが，変更したい場合は下記のように環境内に\cmd{renewcommand}を使って\cmd{labelitemi}の記号を指定したものに変更することができる．
 
 \begin{minipage}[t]{0.7\hsize}
 \begin{code}
 \begin{itemize}
-\renewcommand{\labelitemi}{■}
-\item 項目1
+    \renewcommand{\labelitemi}{■}
+    \item 項目1
+    \item 項目2
+\end{itemize}
 \end{code}
 \end{minipage}
 \quad
@@ -684,7 +688,8 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 \begin{code}
 % \Alphは大文字のアルファベットを意味する
 \begin{enumerate}[label=\Alph*\,）]
-\item 〜
+    \item 〜
+\end{enumerate}
 \end{code}
 \end{minipage}
 \quad
@@ -703,7 +708,8 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 \begin{code}
 % \Romanは大文字のローマ数字を意味する
 \begin{enumerate}[label=\Roman*.]
-\item 〜
+    \item 〜
+\end{enumerate}
 \end{code}
 \end{minipage}
 \quad
@@ -723,7 +729,8 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 \begin{code}
 % \arabicは小文字のアラビア数字，font=\bfseriesは太字を意味する
 \begin{enumerate}[label=Step \arabic*.,leftmargin=*,font=\bfseries]
-\item 〜
+    \item 〜
+\end{enumerate}
 \end{code}
 
 \begin{screen}
@@ -779,7 +786,7 @@ EPSファイルの変換方法は，鈴木研究室Wikiページ\footnote{\url{h
 
 \subsection{参考文献リストの作成・読み込み}
 \label{subsec:ReferenceInfo}
-文献リストはBiB{\TeX}を用いて作成し，\cmd{bibliographystyle}と\cmd{bibliography}コマンドにより文献用スタイルファイル\texttt{UCLabThesis.bst}と文献データベースファイル\texttt{reference.bbl}を拡張子を省略して指定する．
+文献リストはBiB{\TeX}を用いて作成し，\cmd{bibliographystyle}と\cmd{bibliography}コマンドにより文献用スタイルファイル\texttt{UCLabThesis.bst}と文献データベースファイル\texttt{references.bib}を拡張子を省略して指定する．
 
 \begin{code}
 \bibliographystyle{UCLabThesis}		 % 文献用スタイルファイル
@@ -791,7 +798,7 @@ BiB{\TeX}により\cmd{bibliography}で指定した文献データベースフ�
 細かな修正は，エディタで生成された\texttt{bbl}ファイルを開いて行う．
 なお，文献データベースファイルはサンプルとして\texttt{reference.bib}を用意してあるが，各自で既に作成済みの\texttt{bib}ファイルがあるならば，それを用いた方が効率的である．
 
-文献データベースファイルはJabRef\cite{JabRef}やMendeley\cite{Mendeley}などの文献管理ソフトを利用して作成・編集するとよい．
+文献データベースファイルはJabRef\cite{JabRef}やMendeley\cite{Mendeley}，Zoteroなどの文献管理ソフトを利用して作成・編集するとよい．
 \texttt{bib}ファイルに管理する文献は，そのの種類に応じて適切なエントリタイプを選択する必要がある．
 以下に代表的な文献の種類と，それに対応するエントリタイプおよび必要とする情報をまとめる．
 

@@ -10,43 +10,89 @@
 例えば，以下のような内容が付録として適切である．
 
 \begin{itemize}
-\item プロトコルの仕様，シーケンス，パケットフォーマットなど
-\item プログラムのフローチャート，アルゴリズムなど
+\item プロトコル，シーケンス，パケットフォーマットなどの詳細情報
+\item プログラムのソースコード
 \item 実装の詳細な情報，インストール方法，実行方法など
 \item 関連研究の詳細
 \item 本文中に記載しなかった実験データおよび評価結果など
-\item 本文中で使用する記号の定義
 \item 研究の過程で得られた知見，修正したプログラムのバグなど
 \end{itemize}
 
 
-\chapter{使用しているパッケージ}\label{apdx:package}
+\section{ソースコードを掲載する方法}
 
-本{\TeX}文章が採用しているスタイルファイル\texttt{UCLabThesis.sty}は，下記のパッケージを利用している．
-各自の環境に必要なスタイルファイルがない場合は，インターネットから入手してインストールする必要がある．
+ソースコードを掲載する場合は，下記の様に{\TeX}ファイルに直接コードを記述する方法と，外部のソースファイルを読み込む方法がある．
+{\TeX}ファイルの可読性などを考慮すると，\subsecref{subsec:lstinputlisting}の読み込む方法を推奨する．
 
-\begin{itemize}
-\item \texttt{geometry}
-\item \texttt{times}
-\item \texttt{mathptmx}
-\item \texttt{amsmath}
-\item \texttt{amssymb}
-\item \texttt{extarrows}
-\item \texttt{esvect}
-\item \texttt{graphicx}
-\item \texttt{mediabb}
-\item \texttt{caption}
-\item \texttt{subfig}
-\item \texttt{array}
-\item \texttt{multirow}
-\item \texttt{fancybox}
-\item \texttt{ascmac}
-\item \texttt{framed}
-\item \texttt{eclbkbox}
-\item \texttt{enumerate}
-\item \texttt{enumitem}
-\item \texttt{cite}
-\item \texttt{url}
-\end{itemize}
+
+\subsection{{\TeX}ファイルに直接記述する場合}
+\label{subsec:lstlisting}
+
+ソースコードを{\TeX}ファイルに直接記述する場合は，\texttt{lstlisting}環境内にソースコードを記述する．
+また，\texttt{lstlisting}環境のオプションとして，ソースコードのプログラミング言語\footnote{サポートされているプログラミング言語は，下記Webサイトを参照すること．\\\url{https://www.overleaf.com/learn/latex/Code_listing#Supported_languages}}，キャプションおよび本文から参照するためのラベルを指定する．
+
+\begin{code}
+\begin{lstlisting}[language=プログラミング言語,caption=キャプション,label=src:ラベル]
+ソースコードを記述
+\end{lstlisting}
+\end{code}%
+
+素数を判定するPythonプログラムの記述例を\srcref{src:PrimeNumDescription}に示す．
+
+\begin{lstlisting}[language=Python,caption=素数判定プログラム（直接記述の場合）,label=src:PrimeNumDescription]
+# 素数か否かを判定するプログラム
+
+num = 29
+
+# ユーザが入力する場合
+#num = int(input("Enter a number: "))
+
+# フラグ変数の定義
+flag = False
+
+if num == 1:
+    print(num, "is not a prime number")
+elif num > 1:
+    # 約数のチェック
+    for i in range(2, num):
+        if (num % i) == 0:
+            # 約数が見つかったらflagをTrueにする
+            flag = True
+            # ループを脱ける
+            break
+
+    # flagがTrueかチェック
+    if flag:
+        print(num, "is not a prime number")
+    else:
+        print(num, "is a prime number")
+\end{lstlisting}
+
+
+\subsection{ソースファイルを読み込む方法}
+\label{subsec:lstinputlisting}
+
+ソースファイルを{\TeX}ファイルに読み込んで掲載する場合は，\texttt{lstinputlisting}コマンドを用いる．
+\texttt{lstinputlisting}のオプションは\subsecref{subsec:lstlisting}に示した\texttt{lstlisting}環境のオプションと同じである．
+
+\begin{code}
+\lstinputlisting[language=プログラミング言語,caption=キャプション,label=src:ラベル]{ソースファイルパス}
+\end{code}%
+
+素数を判定するPythonプログラムのソースファイル\texttt{src/primenum.py}の読み込み例を\srcref{src:PrimeNumFile}に示す．
+
+\lstinputlisting[language=Python,caption=素数判定プログラム（ソースファイル読み込みの場合）,label=src:PrimeNumFile]{src/primenum.py}
+
+
+
+\chapter{使用しているパッケージと追加方法}\label{apdx:package}
+
+本{\TeX}文章が採用しているスタイルファイル\texttt{UCLabThesis.sty}には，必要なスタイルファイルを利用するための記述がある．
+各自の環境に必要なスタイルファイルがない場合は，下記の手順でスタイルを適用してほしい．
+\begin{enumerate}
+    \item インターネットから利用したいスタイルファイルを入手する．
+    \item 各自のOverleaf環境にダウンロードしたスタイルファイルをアップロードする．
+    \item \texttt{thesis.tex}で\texttt{UCLabThesis.sty}を読み込んでいる行の下に\verb|\usepackage{...}|を使ってスタイルファイルを適用する．
+\end{enumerate}
 
 \endinput

@@ -26,20 +26,6 @@
 %--------------------------------------------------------------
 \renewcommand{\baselinestretch}{1.2}	% 行送り間隔の倍率
 
-%--------------------------------------------------------------
-% フォント設定
-%--------------------------------------------------------------
-% 本文フォントをTimes系に変更するスタイルファイル
-% * デフォルトのローマンフォントをTimesに変更
-% * デフォルトのサンセリフフォントをHelveticaに変更
-% * デフォルトの等幅フォントをCourierに変更
-%\usepackage{times}
-% 等幅フォントはそのままとし，ローマンフォントとサンセリフフォントをTimes，Helveticaに変更する場合
-\renewcommand{\rmdefault}{ptm}
-\renewcommand{\sfdefault}{phv}
-
-% 数式フォントをTimes系に変更するスタイルファイル
-\usepackage{mathptmx}
 
 %--------------------------------------------------------------
 % 数式関係
@@ -207,10 +193,8 @@
 % 図表のフォーマット
 %--------------------------------------------------------------
 % 図を挿入するスタイルファイル
-%\usepackage[dvipdfm]{graphicx}
-\usepackage[dvipdfmx]{graphicx}
-% PNG，JPEG，PDF形式の図を挿入する場合のbbファイルを自動生成するスタイルファイル
-\usepackage{mediabb}
+\usepackage{graphicx}
+\usepackage[dvipdfmx]{color}
 % 図表の位置を指定するスタイルファイル
 \usepackage{float}
 
@@ -264,6 +248,9 @@
 % 表組みの行を結合するスタイルファイル
 \usepackage{multirow}
 
+% 表の下に脚注を追加するスタイル
+\usepackage{threeparttable}			
+
 % 太い罫線
 \def\Hline{\noalign{\hrule height 0.4mm}}
 
@@ -291,6 +278,7 @@
 \def\figref#1{\figurename\hskip1ex \ref{#1}}
 \def\tabref#1{\tablename\hskip1ex \ref{#1}}
 \def\eqref#1{式(\ref{#1})}
+\def\srcref#1{ソースコード\ref{#1}}
 \def\chapref#1{\ref{#1}章}
 \def\secref#1{\ref{#1}節}
 \def\subsecref#1{\ref{#1}項}
@@ -374,6 +362,30 @@
 \end{Verbatim}
 \end{screen}
 }
+
+%--------------------------------------------------------------
+% ソースコードを掲載する設定
+%--------------------------------------------------------------
+\usepackage{listings,plistings}	 
+\usepackage[dvipsnames]{xcolor}
+\lstset{
+	basicstyle=\ttfamily\scriptsize,
+	commentstyle=\gtfamily\color{Green},
+	keywordstyle=\bfseries,
+	numberstyle=\tiny\color{Gray},
+	frame=tRBl,
+    breakatwhitespace=false,
+	breaklines=true,
+    captionpos=t,
+	keepspaces=true,
+    numbers=left,
+	numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\renewcommand{\lstlistingname}{ソースコード}
 
 %--------------------------------------------------------------
 % 謝辞環境
